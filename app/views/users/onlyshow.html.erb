@@ -1,0 +1,53 @@
+<br></br>
+<h1><%=@user.name %></h1>
+<br></br>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="1">
+  <tr>
+    <td width="25%">
+      <br/>
+      <span style="padding: 40px 30px 5px 20px;margin-top: 10px;" ><%= image_tag @user.picture.url, :width=>'150', :height=>'100' %></span>
+      
+
+
+
+
+     
+    </td>
+    <td align="top">
+      <b>name:</b> <%= @user.name %>
+      <p><br></br>
+        <b>email:</b><%= @user.email %>
+      </p>
+      
+
+    </td>
+    <td>
+
+    </td>
+  </tr>
+</table>
+<br></br>
+
+<br></br>
+ <% form_tag(:controller => "users", :action => "create_comment") do %>
+ <%=hidden_field(:post, :receiver_id, :value => @user.id) %>
+ <!--<%#=hidden_field(:post, :messagee) %>-->
+   <%= label_tag(:message, "Post Scrap") %><br />
+   <%= text_area_tag(:message, nil, :size => "44x6") %><br />
+   <%= submit_tag("Submit") %>
+ <% end %>
+
+
+
+<%  @posts.each do |post| %>
+
+
+ <div class="post"><p><%= post.message %></p>
+   <p>sender :<%=User.find(post.sender_id).name  %><br></br><%= distance_of_time_in_words(post.created_at.utc, Time.now.utc) %> ago</p>
+ </div>
+<% end %>
+
+<br></br>
+
+

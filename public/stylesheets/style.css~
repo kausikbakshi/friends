@@ -1,0 +1,104 @@
+/* CSS Document */
+body{
+	font: normal 14px/19px Georgia, "Times New Roman", Times, serif;
+	color: #000000;
+	background:#F0F6FA;
+	padding: 0;
+	margin: 0;
+	
+}
+*{
+	padding: 0;
+	margin: 0;
+}
+
+
+a{ outline: none;}
+.FL{ float: left;}
+.FR{ float: right;}
+.PD-LEFT-5{ padding-left: 5px;}
+.PD-RIGHT-5{ padding-right: 5px;}
+.PD-TOP-5{ padding-top: 5px;}
+.PD-BOTTOM-5{ padding-bottom: 5px;}
+.PD-LEFT-10{ padding-left: 10px;}
+.PD-RIGHT-10{ padding-right: 10px;}
+.PD-TOP-10{ padding-top: 10px;}
+.PD-BOTTOM-10{ padding-bottom: 10px;}
+.clear{ clear: both;}
+.clearleft{ clear: left;}
+.body{
+width:990px;
+height:100%;
+overflow:hidden;
+margin:0 auto;
+}
+.hedder{
+background:url(/images/nab_bg.png) repeat-x;
+height:39px;
+}
+.manu{
+padding:10px 0 0 50px;
+width:630px;
+font: normal 14px/16px "Verdana", Arial, Helvetica, sans-serif;
+color:#ffffff;
+}
+.manu a:link, .manu a:visited{
+padding:0 5px 0 5px;
+text-decoration:none;
+font: normal 14px/16px "Verdana", Arial, Helvetica, sans-serif;
+color:#ffffff;
+}
+.manu a:hover{
+font: normal 14px/16px "Verdana", Arial, Helvetica, sans-serif;
+color:#ffffff;
+text-decoration:underline;
+}
+
+.signup{
+padding-top:10px;
+font: normal 14px/16px "Verdana", Arial, Helvetica, sans-serif;
+color:#ffffff;
+}
+.logout{
+padding-top:10px;
+font: normal 14px/16px "Verdana", Arial, Helvetica, sans-serif;
+color:#ffffff;
+}
+.logout a:link, .logout a:visited{
+text-decoration:none;
+font: bold 14px/16px "Verdana", Arial, Helvetica, sans-serif;
+color:#ffffff;
+}
+.search{
+background:url(/images/search_bg.png) no-repeat 30px 5px;
+width:250px;
+height:40px;
+}
+
+.fast_input{
+width:125px;
+background:none;
+border:none;
+margin-top:5px;
+}
+.input_search{
+background:url(/images/signup_banner.png) no-repeat 340px 0;
+height:292px;
+width:800px;
+}
+.second_input{
+border:1px solid #4BC0E7;
+background:#E9F3F4;
+width:199px;
+height:25px;
+}
+.text{
+width:100px;
+font: normal 14px/16px "Verdana", Arial, Helvetica, sans-serif;
+color:#056BAC;
+}
+
+.text_aria{
+width:200px;
+
+}

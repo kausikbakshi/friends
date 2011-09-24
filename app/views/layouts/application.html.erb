@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>My_Friends</title>
+    <!--<link href="style.css" rel="stylesheet" type="text/css" />-->
+    <%= stylesheet_link_tag "style" %>
+<%#=javascript_include_tag :defaults %>
+  </head>
+
+  <body>
+    <div class="body">
+      <div class="hedder">
+        <div class="FL manu">
+          <% if params[:controller] != 'users' or params[:action] != 'home' %>
+            <%=link_to 'home', home_users_path if logged_in? %>
+          <% end %>
+          <!--<a href="#">home</a>-->
+          <!--<a href="#"> profile</a>
+
+
+          <a href="#">scapbook</a>
+          <a href="#">friend </a>
+
+          <a href="#"> communities</a>-->
+        </div>
+
+        <div class="FL signup"><%=link_to 'signup',  signup_path if !logged_in? %></div>
+        <% if logged_in? %>
+          <div class="FL search">
+            <div class="FL" style="width:130px; margin: 5px 0 0 40px;">
+              <input name="" type="text"  class="fast_input"/>
+            </div>
+            <div  class="FL" style="margin:10px 0 0 0;"><a href="#"><img src="../images/searchPb.png" border="0" /></a></div>
+          </div>
+          <div class="FR logout" style="padding-right: 15px;"><%=link_to 'signout',  logout_path if logged_in? %></div>
+        <% end %>
+        <div  class="clear"></div>
+      </div>
+      <%=yield%>
+    </div>
+    <div></div>
+  </body>
+</html>

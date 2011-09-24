@@ -1,0 +1,36 @@
+<h1> List of friends </h1>
+
+<br></br>
+<br></br>
+<br></br>
+<%form_tag  destroyed_users_path do %>
+<% if !@friends.blank? %>
+<table border="2">
+  <tr>
+    <th>click_to_remove</th>
+    <th>friends_name</th>
+    <th>email_address</th>
+    <th>friend_picture</th>
+    <!--<th>click_to_remove</th>-->
+    </tr>
+  <%  @friends.each do |friend| %>
+    <% user = User.find(friend.friend_id) %>
+    <tr>
+      <!--#problem on below line friend_id[]-->
+      <td><%= check_box_tag "friend_ids[]", user.id %></td>
+      <td><%= user.name  %></td>
+      <td><%= user.email  %></td>
+     <!-- <td><#%= image_tag user.picture.url,:height=>'50',:width=>'75' %></td>-->
+     <td><%=link_to image_tag(user.picture.url,:height=>'50',:width=>'75'), onlyshow_users_path(:id=>user.id) %></td>
+
+      
+      <!--<td><#%=link_to 'remove', user_path(:id => user.id),:confirm => "Are you sure to remove from friend list?",:method => :DELETE%></td>-->
+    </tr>
+  <% end %>
+</table>
+<% else %>
+<p>No Friend yet.</p>
+<% end %>
+<%= submit_tag 'Remove' %>
+<% end %>
+

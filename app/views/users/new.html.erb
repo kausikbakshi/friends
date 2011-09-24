@@ -1,0 +1,79 @@
+<%= javascript_include_tag 'jquery-1.3.2' %>
+<%= javascript_include_tag 'jquery.validate' %>
+<%= stylesheet_link_tag "jquery.validate" %>
+<%= stylesheet_link_tag "styles" %>
+
+<script type="text/javascript">
+
+            jQuery(function(){
+                jQuery("#names").validate({
+                    expression: "if (VAL.length > 0 && VAL) return true; else return false;",
+                    message: "Please fill up Name Field",
+                   
+                });
+
+                jQuery("#emails").validate({
+                    expression: "if (VAL.match(/^[^\\W][a-zA-Z0-9\\_\\-\\.]+([a-zA-Z0-9\\_\\-\\.]+)*\\@[a-zA-Z0-9_]+(\\.[a-zA-Z0-9_]+)*\\.[a-zA-Z]{2,4}$/)) return true; else return false;",
+                    message: "Should be a valid Email id"
+                });
+                jQuery("#logins").validate({
+                    expression: "if (VAL.length > 5 && VAL) return true; else return false;",
+                    message: "Please enter greter than 5 character login name"
+                });
+                
+                 jQuery("#ValidPassword").validate({
+                    expression: "if (VAL.length > 5 && VAL) return true; else return false;",
+                    message: "Please enter a valid Password"
+                });
+
+                jQuery("#ValidConfirmPassword").validate({
+                    expression: "if ((VAL == jQuery('#ValidPassword').val()) && VAL) return true; else return false;",
+                    message: "Confirm password field doesn't match the password field"
+                });
+                
+            });
+           
+        </script>
+
+
+
+
+<%=error_messages_for :user %>
+<div>
+<h1>Sign up as a new user</h1>
+<% @user.password = @user.password_confirmation = nil %>
+
+<%= error_messages_for :user %>
+<% form_for :user, :url => users_path, :name => "SignupForm",  :html => { :multipart => true } do |f| -%>
+
+<p><%= label_tag 'name' %><br/>
+<%= f.text_field :name , :id => "names"  %></p>
+
+<p><%= label_tag 'email' %><br/>
+<%= f.text_field :email , :id => "emails"%></p>
+
+<p><%= label_tag 'login' %><br/>
+<%= f.text_field :login , :id => "logins"%></p>
+
+<p><%= label_tag 'password' %><br/>
+<%= f.password_field :password , :id => "ValidPassword"%></p>
+
+<p><%= label_tag 'password_confirmation', 'Confirm Password' %><br/>
+<%= f.password_field :password_confirmation , :id => "ValidConfirmPassword"%></p>
+
+  <p><%= label_tag 'picture' %><br/>
+  <%= f.file_field :picture %></p>
+  <br></br>
+ 
+<p><%= submit_tag("Sign up" , :id => "FormSubmit") %></p>
+<% end -%>
+
+</div>
+<br></br>
+
+
+<!--<p><%=link_to 'login', '/home'%></p>-->
+<p><%=link_to 'Signin', root_path%></p>
+
+
+

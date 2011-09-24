@@ -1,0 +1,23 @@
+<% form_tag session_path do -%>
+<div  class="FR input_search" style="margin-top:20px;">
+ 
+<div style="margin:70px 0 0 360px;">
+<%=  flash[:notice] %>
+  <br></br>
+<div>
+<div class="FL text">USER NAME</div>
+<div class="FL  text_aria"><%= text_field_tag 'login', @login %></div>
+<div class="clear"></div>
+</div>
+<div>&nbsp;</div>
+<div>
+<div class="FL text">PASSWORD</div>
+<div class="FL  text_aria"><%= password_field_tag 'password', nil %></div>
+<div class="clear"></div>
+</div>
+<div>&nbsp;</div>
+<div style="margin:0 0 0 100px;"><%=image_submit_tag "../images/sign_button.png"  %></div>
+
+</div>
+</div>
+<% end %>

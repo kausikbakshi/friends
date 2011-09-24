@@ -1,0 +1,42 @@
+<%= javascript_include_tag 'jquery-1.3.2' %>
+<%= javascript_include_tag 'jquery.validate' %>
+<%= stylesheet_link_tag "jquery.validate" %>
+<%= stylesheet_link_tag "styles" %>
+
+
+<script type="text/javascript">
+
+ jQuery(function(){
+                jQuery("#names").validate({
+                    expression: "if (VAL.length > 0 && VAL) return true; else return false;",
+                    message: "Please fill up Name Field"
+                });
+
+                jQuery("#emails").validate({
+                    expression: "if (VAL.match(/^[^\\W][a-zA-Z0-9\\_\\-\\.]+([a-zA-Z0-9\\_\\-\\.]+)*\\@[a-zA-Z0-9_]+(\\.[a-zA-Z0-9_]+)*\\.[a-zA-Z]{2,4}$/)) return true; else return false;",
+                    message: "Should be a valid Email id"
+                });
+
+        });
+
+</script>
+
+<h1>edit user</h1>
+
+
+<%= error_messages_for :user %>
+<% form_tag user_path(:id=>@user.id),:method => "PUT", :multipart => true do %>
+
+<p><name<br/>
+<%= text_field :user,:name, :id => "names" %></p>
+
+
+<p>email<br/>
+<%= text_field :user,:email, :id => "emails" %></p>
+
+
+<p>change_picture<br/>
+<%=file_field :user,:picture %></p>
+
+<p><%= submit_tag 'update' %></p>
+<% end -%>

@@ -1,0 +1,60 @@
+<p align ="center"><%= flash[:notice] %></p>
+
+
+
+<table width="100%" cellpadding="0" cellspacing="0" border="1">
+  <tr>
+    <td width="25%">
+      <br/>
+      <span style="padding: 40px 45px 5px 15px;margin-top: 20px;" ><%= image_tag @user.picture.url, :width=>'150', :height=>'100' %></span>
+      <!--<span><#%=link_to_remote  "Change Picture",:url => change_picture_users_path %></span>-->
+
+      <!--<p id ="XYZ" ><#%=link_to_function("change picture", "Element.remove</p>   -->
+
+
+
+
+      <p>&nbsp;<%=link_to 'edit_profile', edit_user_path(@user) %></p>
+      <p>&nbsp;<%=link_to 'add_friend', users_path %></p>
+      <p>&nbsp;<%=link_to 'show_my_friend', '/users/view_friends' %></p>
+    </td>
+    <td align="top">
+      <p align="right" ><b>Hello <%= @user.name %>&nbsp;</b></p>
+      &nbsp;<b>name:</b> <%= @user.name %>
+      <p>
+        &nbsp;<b>email:</b><%= @user.email %>
+      </p>
+      <div id ="middleform" style="border: solid 1px #000;">
+        &nbsp;Here you can change your Picture
+
+        <br/>
+        <!--<#% form_remote_tag :html => { :action => update_picture_users_path,:method => 'post', :multipart => true } do -%>-->
+        <% form_tag update_picture_users_path(:id=>@user.id), :multipart => true do -%>
+          <!-- <#% form_tag :url => users_path(:id=>@user.id), :method => put, :multipart => true do -%>-->
+          <div>
+
+            <p>&nbsp;change_picture<br/>
+              &nbsp;<%=file_field :user,:picture  %></p>
+            &nbsp;<%= submit_tag 'Change' %>
+          </div>
+        <% end -%>
+      </div>
+
+    </td>
+    <td>
+
+    </td>
+  </tr>
+</table>
+
+
+ <!--<%#= render :partial => "post" %>-->
+ <%  @posts.each do |post| %>
+
+ 
+ <div class="post"><p><%= post.message %></p>
+   <p>sender :<%=User.find(post.sender_id).name  %><br></br><%= distance_of_time_in_words(post.created_at.utc, Time.now.utc) %> ago</p>
+ </div>
+<% end %>
+
+
